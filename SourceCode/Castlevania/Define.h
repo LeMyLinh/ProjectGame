@@ -42,8 +42,8 @@
 const char CLASS_NAME[] = "Castlevania";
 const char GAME_TITLE[] = "Castlevania";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH = 512;     //32x2x8          // width of game in pixels
-const UINT GAME_HEIGHT = 448;    //32x2x7           // height of game in pixels
+const UINT GAME_WIDTH = 256;     //32x2x8          // width of game in pixels
+const UINT GAME_HEIGHT = 224;    //32x2x7           // height of game in pixels
 
 // Game Manger
 const double PI = 3.14159265;
@@ -60,21 +60,14 @@ const UCHAR ESC_KEY = VK_ESCAPE;       // escape key
 const UCHAR ALT_KEY = VK_MENU;         // Alt key
 const UCHAR ENTER_KEY = VK_RETURN;       // Enter key
 
-#define X_KEY 0x58
+#define VK_X 0x58
+#define VK_Z 0x5A
+										 // Resouces
+const char SOURCE_IMAGE[] = "Resouces\\SpriteSheet.png";
+const char SOURCE_JSON[] = "Resouces\\SpriteSheet.json"; 
+const char MAP_LEVEL5[] = "Resouces\\Json\\MapLevel5.json";
+const char TILESET_LV5_IMAGE[] = "Resouces\\TileSheetLevel5.png";
 
-										 // Source
-const char SOURCE_IMAGE[] = "Resouces\\simon.png";//character of game
-const char SOURCE_JSON[] = "Resouces\\Simon.json"; //json file of metroid sprite
-
-												 // Ramus
-namespace SIMON_BEHAVIOUR
-{
-	const int front = 7;					//front
-	const int jump = 0;						//jump
-	const int walking[] = { 2, 3 };		//walking
-	const int fighting[] = { 9,10,11 };		//fighting
-	const int dieing = 8;					//dieing
-}
 
 // Element ID
 enum eID {
@@ -89,6 +82,13 @@ enum eStatus {
 	FIGHTING = 3,
 	DIEING = 4,
 };
+
+// direction
+enum eDirection {
+	left = -1,
+	right = 1,
+};
+
 
 typedef D3DXVECTOR3 GVector3;
 typedef D3DXVECTOR2 GVector2;

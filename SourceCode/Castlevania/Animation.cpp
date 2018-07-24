@@ -8,8 +8,9 @@ Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float tim
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	this->endFrame = totalFrames;
+	//this->endFrame = totalFrames;
 	this->isloop = loop;
+	this->isCompleted = false;
 	this->frameDelay = timeAnim;
 	this->timerAnim = 0;
 	this->canAnimate = false;
@@ -22,15 +23,17 @@ Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float ti
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	this->endFrame = totalFrames;
+	//this->endFrame = totalFrames;
 	this->frameDelay = timeAnim;
 	this->timerAnim = 0;
 	this->canAnimate = false;
+	this->isCompleted = false;
+	this->isloop = true;
 }
 
-Animation::Animation()
-{
-}
+//Animation::Animation()
+//{
+//}
 
 
 Animation::~Animation()
@@ -50,16 +53,16 @@ void Animation::setValueOfCurrentFrame(int index)
 
 	currentFrame = index;
 
-	if (currentFrame > endFrame)
+	if (currentFrame > totalFrames - 1)
 		currentFrame = startFrame;
 
 	// setRect
 	this->sprite->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[this->listFrames[currentFrame]].rect);
 
-	//if (!loop && currentFrame == endFrame)
-	//{
-	//	this->stop();
-	//}
+	if (!isloop && currentFrame == totalFrames -1)
+	{
+		this->stop();
+	}
 }
 
 int Animation::getCurrentFrame()
@@ -87,6 +90,7 @@ void Animation::start()
 	if (canAnimate == false)
 	{
 		canAnimate = true;
+		isCompleted = false;
 	}
 }
 
@@ -96,4 +100,9 @@ void Animation::stop()
 	{
 		canAnimate = false;
 	}
+}
+
+bool Animation::isFinished()
+{
+	return isCompleted;
 }

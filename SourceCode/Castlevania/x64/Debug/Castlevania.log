@@ -1,2 +1,39 @@
-﻿  Simon.cpp
+﻿  BaseObject.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  BaseState.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  Castlevania.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  IndexOfSpriteSheet.cpp
+  Simon.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  SimonStateManager.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  SimonStateStand.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+  WinMain.cpp
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(16): warning C4005: 'VECTOR2ZERO': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(95): note: see previous definition of 'VECTOR2ZERO'
+e:\hockyhe\projectgame\sourcecode\castlevania\graphics.h(17): warning C4005: 'VECTOR2ONE': macro redefinition
+  e:\hockyhe\projectgame\sourcecode\castlevania\define.h(96): note: see previous definition of 'VECTOR2ONE'
+e:\hockyhe\projectgame\sourcecode\castlevania\winmain.cpp(63): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
+  Generating Code...
   Castlevania.vcxproj -> E:\HocKyHe\ProjectGame\SourceCode\x64\Debug\Castlevania.exe
