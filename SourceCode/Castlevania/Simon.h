@@ -9,20 +9,24 @@
 #include "BaseObject.h"
 #include "Camera.h"
 
-#define SIMON_VERLOCITY 100
+#define SIMON_VERLOCITY_X 60
+#define SIMON_VERLOCITY_Y 60
+#define MAX_JUMP_HEIGHT 80
 
 class Simon : public BaseObject
 {
 private:
 	Input * input;
-	Animation	//*currentAnimation,
-		//*standingAnimation,
-		*walkingAnimation,
+	Animation		*walkingAnimation,
 		*fightingAnimation,
-		//*jumpingAnimation,
-		//*sittingAnimation,
+		*upStairAnimation,
+		*downStairAnimation,
+		*up_fight_animation,
+		*down_fight_animation,
 		*sit_fight_animation;
 
+	bool isFalling;
+	float totalJumpHeight;
 	Camera* camera;
 
 public:
@@ -30,17 +34,26 @@ public:
 	Simon();
 	~Simon();
 
-	void setRect();
 	void draw();
 	void handleInput(float dt);
 	void update(float dt);
 	void release();
 
 	void updateDirection();
-	void running(float dt);
-	void turnUp();
-	void jump();
+	void updateHorizontal(float dt);
+	void updateVertical(float dt);
 	
-	Animation * getStartingAnim();
+	bool isFall();
+	void setFall(bool isFall);
+
+	//Animation* getStartingAnim();
+	Animation* getWalkingAnimation();
+	Animation* getFightingAnimation();
+	Animation* getUpStairAnimation();
+	Animation* getDownStairAnimation();
+	Animation* getUpFightAnimation();
+	Animation* getDownFightAnimation();
+	Animation* getSitFightAnimation();
+
 	void setCamera(Camera* cam);
 };

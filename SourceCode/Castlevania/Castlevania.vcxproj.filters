@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Object">
       <UniqueIdentifier>{38f64fff-da2c-474e-a86d-5eeec3aaf544}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Simon">
+      <UniqueIdentifier>{a061fe1c-38d2-44a1-931f-95b52181ea19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Simon">
+      <UniqueIdentifier>{bb44f3c0-8f5d-4900-9772-73b741d4b185}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -57,9 +63,6 @@
     <ClInclude Include="BaseObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Simon.h">
-      <Filter>Header Files\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
@@ -78,11 +81,23 @@
     <ClInclude Include="BaseState.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Simon.h">
+      <Filter>Header Files\Object\Simon</Filter>
+    </ClInclude>
     <ClInclude Include="SimonStateManager.h">
-      <Filter>Header Files\Object</Filter>
+      <Filter>Header Files\Object\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="SimonStateSitting.h">
+      <Filter>Header Files\Object\Simon</Filter>
     </ClInclude>
     <ClInclude Include="SimonStateStand.h">
-      <Filter>Header Files\Object</Filter>
+      <Filter>Header Files\Object\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="SimonStateWalking.h">
+      <Filter>Header Files\Object\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="SimonStateJumping.h">
+      <Filter>Header Files\Object\Simon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +128,6 @@
     <ClCompile Include="BaseObject.cpp">
       <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Simon.cpp">
-      <Filter>Source Files\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
@@ -134,11 +146,23 @@
     <ClCompile Include="BaseState.cpp">
       <Filter>Source Files\Object</Filter>
     </ClCompile>
-    <ClCompile Include="SimonStateManager.cpp">
-      <Filter>Source Files\Object</Filter>
+    <ClCompile Include="SimonStateWalking.cpp">
+      <Filter>Source Files\Object\Simon</Filter>
     </ClCompile>
     <ClCompile Include="SimonStateStand.cpp">
-      <Filter>Source Files\Object</Filter>
+      <Filter>Source Files\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonStateSitting.cpp">
+      <Filter>Source Files\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonStateManager.cpp">
+      <Filter>Source Files\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="Simon.cpp">
+      <Filter>Source Files\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonStateJumping.cpp">
+      <Filter>Source Files\Object\Simon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

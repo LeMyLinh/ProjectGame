@@ -6,7 +6,7 @@ BaseObject::BaseObject(eID id)
 {
 	this->id = id;
 	this->sprite = nullptr;
-	this->status = eStatus::NORMAL;
+	this->status = eStatus::STANDING;
 	this->direction = eDirection::right;
 }
 
@@ -68,6 +68,7 @@ VECTOR2 BaseObject::getPosition()
 {
 	return this->sprite->getPosition();
 }
+
 
 void BaseObject::setPosition(VECTOR2 position)
 {

@@ -3,6 +3,9 @@
 
 class SimonStateStand : public BaseState
 {
+private:
+	bool isPressed;
+
 public:
 	SimonStateStand();
 	SimonStateStand(Simon* simon, Input* input);

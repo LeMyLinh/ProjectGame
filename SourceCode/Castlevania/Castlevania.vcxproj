@@ -33,8 +33,11 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapInfo.h" />
     <ClInclude Include="Simon.h" />
+    <ClInclude Include="SimonStateJumping.h" />
     <ClInclude Include="SimonStateManager.h" />
+    <ClInclude Include="SimonStateSitting.h" />
     <ClInclude Include="SimonStateStand.h" />
+    <ClInclude Include="SimonStateWalking.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TextureManager.h" />
@@ -52,8 +55,11 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapInfo.cpp" />
     <ClCompile Include="Simon.cpp" />
+    <ClCompile Include="SimonStateJumping.cpp" />
     <ClCompile Include="SimonStateManager.cpp" />
+    <ClCompile Include="SimonStateSitting.cpp" />
     <ClCompile Include="SimonStateStand.cpp" />
+    <ClCompile Include="SimonStateWalking.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />

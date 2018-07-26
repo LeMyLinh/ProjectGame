@@ -30,6 +30,9 @@ public:
 	virtual bool isInDirection(eDirection direct);
 
 	virtual VECTOR2 getPosition();
+	//virtual float getPositionX();
+	//virtual float getPositionY();
+
 	virtual void setPosition(VECTOR2 position);
 	virtual void setPosition(float x, float y);
 	virtual void setPositionX(float x);

@@ -15,6 +15,8 @@ private:
 	bool isloop;
 	bool isCompleted;
 	Sprite *sprite;
+	VECTOR2 origin;
+
 public:
 	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim, bool loop);
 	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim);

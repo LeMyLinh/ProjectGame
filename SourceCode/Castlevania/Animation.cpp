@@ -8,12 +8,15 @@ Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float tim
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	//this->endFrame = totalFrames;
 	this->isloop = loop;
 	this->isCompleted = false;
 	this->frameDelay = timeAnim;
 	this->timerAnim = 0;
 	this->canAnimate = false;
+
+	//width, height
+	this->sprite->setSpriteWidth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].width);
+	this->sprite->setSpriteHeigth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].height);
 }
 
 Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float timeAnim)
@@ -23,17 +26,16 @@ Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float ti
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	//this->endFrame = totalFrames;
 	this->frameDelay = timeAnim;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 	this->isCompleted = false;
 	this->isloop = true;
-}
 
-//Animation::Animation()
-//{
-//}
+	//width, height
+	this->sprite->setSpriteWidth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].width);
+	this->sprite->setSpriteHeigth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].height);
+}
 
 
 Animation::~Animation()

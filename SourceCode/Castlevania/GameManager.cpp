@@ -62,7 +62,7 @@ void GameManager::initialize(HWND hw)
 												// initialize graphics
 	graphics = new Graphics();
 	// throws GameError
-	graphics->initialize(hwnd, GAME_WIDTH, GAME_HEIGHT, FULLSCREEN);
+	graphics->initialize(hwnd, WINDOW_WIDTH, WINDOW_HEIGHT, FULLSCREEN);
 
 	// initialize input, do not capture mouse
 	input->initialize(hwnd, false);             // throws GameError
@@ -86,11 +86,8 @@ void GameManager::renderGame()
 	//start rendering
 	if (SUCCEEDED(graphics->beginScene()))
 	{
-		graphics->spriteBegin();
-		render();           // call render() in derived object
-
-		graphics->spriteEnd();
-
+		// call render() in derived object
+		render();
 		//stop rendering
 		graphics->endScene();
 	}

@@ -12,21 +12,38 @@ SimonStateManager * SimonStateManager::getInstance()
 
 SimonStateManager::SimonStateManager()
 {
-	stateStart = new SimonStateStand();
-	currentState = stateStart;
+	stateStand = new SimonStateStand();
+	currentState = stateStand;
 }
 
 
 SimonStateManager::~SimonStateManager()
 {
-	delete stateStart;
+	stateStand = nullptr;
+	stateWalking = nullptr;
+	stateSitting = nullptr;
+	stateJumping = nullptr;
+
+
+	currentState = nullptr;
+
+	delete stateStand;
+	delete stateWalking;
+	delete stateSitting;
+	delete stateJumping;
+
+
 	delete currentState;
 }
 
 void SimonStateManager::init(Simon * simon, Input * input)
 {
-	stateStart = new SimonStateStand(simon, input);
-	currentState = stateStart;
+	stateStand = new SimonStateStand(simon, input);
+	stateWalking = new SimonStateWalking(simon, input);
+	stateSitting = new SimonStateSitting(simon, input);
+	stateJumping = new SimonStateJumping(simon, input);
+
+	currentState = stateStand;
 }
 
 BaseState * SimonStateManager::getCurrentState()
@@ -41,9 +58,25 @@ void SimonStateManager::changeStateTo(eStatus eStatus)
 
 	switch (eStatus)
 	{
-	case eStatus::NORMAL:
+	case eStatus::STANDING:
 	{
-		currentState = stateStart;
+		currentState = stateStand;
+		break;
+	}
+	case eStatus::WALKING:
+	{
+		currentState = stateWalking;
+		break;
+	}
+	case eStatus::SITTING:
+	{
+		currentState = stateSitting;
+		break;
+	}
+	case eStatus::JUMPING:
+	{
+		currentState = stateJumping;
+		break;
 	}
 	default:
 		break;

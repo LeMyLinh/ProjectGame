@@ -9,8 +9,8 @@ Graphics::Graphics()
 	device3d = NULL;
 	sprite = NULL;
 	fullscreen = false;
-	width = GAME_WIDTH;    // width & height are replaced in initialize()
-	height = GAME_HEIGHT;
+	width = WINDOW_WIDTH;    // width & height are replaced in initialize()
+	height = WINDOW_HEIGHT;
 	backColor = GraphicsNS::BACK_COLOR;
 }
 
@@ -267,67 +267,6 @@ void Graphics::drawSprite(const SpriteData &spriteData, COLOR_ARGB color)
 
 	// END
 	sprite->End();
-
-	//////////////////////////////////////////////////////////
-	//if (spriteData.texture == NULL)      // if no texture
-	//	return;
-
-	//// Find center of sprite
-	//D3DXVECTOR2 spriteCenter = D3DXVECTOR2((float)((spriteData.width / 2)*spriteData.scale),
-	//	(float)((spriteData.height / 2)*spriteData.scale));
-
-	////D3DXVECTOR3 center;
-
-	////center.z = 0;
-	//// Screen position of the sprite
-	//D3DXVECTOR2 translate = D3DXVECTOR2((float)spriteData.x, (float)spriteData.y);
-	//// Scaling X,Y
-	//D3DXVECTOR2 scaling(spriteData.scale, spriteData.scale);
-	//if (spriteData.flipHorizontal)  // if flip horizontal
-	//{
-	//	scaling.x *= -1;            // negative X scale to flip
-	//								// Get center of flipped image.
-	//	spriteCenter.x -= (float)(spriteData.width*spriteData.scale);
-	//	// Flip occurs around left edge, translate right to put
-	//	// Flipped image in same location as original.
-	//	translate.x += (float)(spriteData.width*spriteData.scale);
-	//}
-	//if (spriteData.flipVertical)    // if flip vertical
-	//{
-	//	scaling.y *= -1;            // negative Y scale to flip
-	//								// Get center of flipped image
-	//	spriteCenter.y -= (float)(spriteData.height*spriteData.scale);
-	//	// Flip occurs around top edge, translate down to put
-	//	// Flipped image in same location as original.
-	//	translate.y += (float)(spriteData.height*spriteData.scale);
-	//}
-	//// Create a matrix to rotate, scale and position our sprite
-	//D3DXMATRIX matrix;
-
-	//D3DXMatrixTransformation2D(
-	//	&matrix,                // the matrix
-	//	NULL,                   // keep origin at top left when scaling
-	//	0.0f,                   // no scaling rotation
-	//	&scaling,               // scale amount
-	//	&spriteCenter,          // rotation center
-	//	D3DXToRadian((float)(spriteData.angle)),  // rotation angle
-	//	&spriteData.transformCamera);            // X,Y location
-
-	//							// Tell the sprite about the matrix
-	//							//D3DXMATRIX matrixTranform,objFinal;
-
-
-	//							////D3DXMatrix
-	//							//D3DXMatrixIdentity(&objFinal);
-	//							//D3DXMatrixMultiply(&objFinal, &objFinal, &matrix);
-
-
-	//							//device3d->SetTransform(D3DTS_WORLD, &objFinal);
-	//sprite->SetTransform(&matrix);
-
-	//// Draw the sprite
-	//sprite->Draw(spriteData.texture, &spriteData.rect, NULL, NULL, color);
-
 }
 
 //=============================================================================
@@ -385,7 +324,7 @@ void Graphics::changeDisplayMode(GraphicsNS::DISPLAY_MODE mode)
 		else            // windowed
 		{
 			SetWindowLong(hwnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
-			SetWindowPos(hwnd, HWND_TOP, 0, 0, GAME_WIDTH, GAME_HEIGHT,
+			SetWindowPos(hwnd, HWND_TOP, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
 				SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
 			// Adjust window size so client area is GAME_WIDTH x GAME_HEIGHT
@@ -394,8 +333,8 @@ void Graphics::changeDisplayMode(GraphicsNS::DISPLAY_MODE mode)
 			MoveWindow(hwnd,
 				0,                                           // Left
 				0,                                           // Top
-				GAME_WIDTH + (GAME_WIDTH - clientRect.right),    // Right
-				GAME_HEIGHT + (GAME_HEIGHT - clientRect.bottom), // Bottom
+				WINDOW_WIDTH + (WINDOW_WIDTH - clientRect.right),    // Right
+				WINDOW_HEIGHT + (WINDOW_HEIGHT - clientRect.bottom), // Bottom
 				TRUE);                                       // Repaint the window
 		}
 
@@ -404,7 +343,7 @@ void Graphics::changeDisplayMode(GraphicsNS::DISPLAY_MODE mode)
 	{
 		// An error occured, try windowed mode 
 		SetWindowLong(hwnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
-		SetWindowPos(hwnd, HWND_TOP, 0, 0, GAME_WIDTH, GAME_HEIGHT,
+		SetWindowPos(hwnd, HWND_TOP, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
 			SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
 		// Adjust window size so client area is GAME_WIDTH x GAME_HEIGHT
@@ -413,8 +352,8 @@ void Graphics::changeDisplayMode(GraphicsNS::DISPLAY_MODE mode)
 		MoveWindow(hwnd,
 			0,                                           // Left
 			0,                                           // Top
-			GAME_WIDTH + (GAME_WIDTH - clientRect.right),    // Right
-			GAME_HEIGHT + (GAME_HEIGHT - clientRect.bottom), // Bottom
+			WINDOW_WIDTH + (WINDOW_WIDTH - clientRect.right),    // Right
+			WINDOW_HEIGHT + (WINDOW_HEIGHT - clientRect.bottom), // Bottom
 			TRUE);                                       // Repaint the window
 	}
 }

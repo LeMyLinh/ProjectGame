@@ -43,8 +43,9 @@ const char CLASS_NAME[] = "Castlevania";
 const char GAME_TITLE[] = "Castlevania";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 256;     //32x2x8          // width of game in pixels
-const UINT GAME_HEIGHT = 224;    //32x2x7           // height of game in pixels
-
+const UINT GAME_HEIGHT = 176;    //32x5.5           // height of game in pixels
+const UINT WINDOW_WIDTH = 256;
+const UINT WINDOW_HEIGHT = 224;
 // Game Manger
 const double PI = 3.14159265;
 const float FRAME_RATE = 60.0f;                // the target frame rate (frames/sec)
@@ -76,11 +77,15 @@ enum eID {
 
 // Element's status
 enum eStatus {
-	NORMAL = 0,
+	STANDING = 0,
 	JUMPING = 1,
 	WALKING = 2,
 	FIGHTING = 3,
 	DIEING = 4,
+	UPSTAIR = 5,
+	DOWNSTAIR = 6,
+	SITTING = 7,
+	FALLING = 8,
 };
 
 // direction
@@ -89,8 +94,3 @@ enum eDirection {
 	right = 1,
 };
 
-
-typedef D3DXVECTOR3 GVector3;
-typedef D3DXVECTOR2 GVector2;
-#define VECTOR2ZERO GVector2(0.0f, 0.0f)
-#define VECTOR2ONE  GVector2(1.0f, 1.0f

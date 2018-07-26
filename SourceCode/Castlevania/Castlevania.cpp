@@ -60,7 +60,7 @@ void Castlevania::initialize(HWND hwnd)
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not initalize map brinstar");
 	}
 
-	camera = new Camera(GAME_WIDTH, GAME_HEIGHT +48);
+	camera = new Camera(GAME_WIDTH, GAME_HEIGHT + 8);
 	//camera->setPosition(VECTOR2(768 + 4 * 32,640 + 176/2));
 	//camera->setPosition(VECTOR2(0, 0));
 

@@ -6,9 +6,9 @@ class Sprite
 {
 public:
 protected:
-	Graphics * graphics;     // pointer to graphics
-	TextureManager *textureManager; // pointer to texture manager
-									// spriteData contains the data required to draw the image by Graphics::drawSprite()
+	Graphics * graphics;
+	TextureManager *textureManager;
+	// spriteData contains the data required to draw the image by Graphics::drawSprite()
 	SpriteManager *spriteManager;
 	SpriteData spriteData;  // SpriteData is defined in "graphics.h"
 	COLOR_ARGB colorFilter; // applied as a color filter (use WHITE for no change
