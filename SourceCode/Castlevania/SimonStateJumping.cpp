@@ -1,4 +1,4 @@
-#include "SimonStateJumping.h"
+﻿#include "SimonStateJumping.h"
 #include "SimonStateManager.h"
 
 
@@ -12,30 +12,58 @@ SimonStateJumping::SimonStateJumping(Simon * simon, Input * input) : BaseState(s
 
 SimonStateJumping::~SimonStateJumping()
 {
-	jumpFightAnim = nullptr;
-	delete jumpFightAnim;
+	/*jumpFightAnim = nullptr;
+	delete jumpFightAnim;*/
 }
 
 void SimonStateJumping::init()
 {
 	if (input->isKeyDown(VK_LEFT) || input->isKeyDown(VK_RIGHT))
 	{
-		//this->animation = simon->getJumpingAnim();
 		this->simon->setPosition(this->simon->getPosition().x + 6, this->simon->getPosition().y - 10);
-		return;
 	}
 
 	// Set Data for sprite
-	const SpriteData data = SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->jump];
-	this->simon->getSprite()->setSpriteDataRect(data.rect);
-	this->simon->getSprite()->setSpriteWidth(data.width);
-	this->simon->getSprite()->setSpriteHeigth(data.height);
+	const SpriteData *data = &(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->jump]);
+	this->simon->getSprite()->setSpriteDataRect(data->rect);
+	this->simon->getSprite()->setSpriteWidth(data->width);
+	this->simon->getSprite()->setSpriteHeigth(data->height);
+	this->simon->setOrigin(VECTOR2(0, 1.0f));
 
-	this->jumpFightAnim = simon->getFightingAnimation();
+	//this->jumpFightAnim = simon->getFightingAnimation();
 }
 
 void SimonStateJumping::handleInput(float dt)
 {
+	if (input->isKeyDown(VK_RIGHT) && input->isKeyUp(VK_LEFT))
+	{
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
+
+		// Handle direction
+		if (this->simon->isInDirection(eDirection::left))
+		{
+			this->simon->setScaleX(1);
+			this->simon->setPositionX(this->simon->getPosition().x - this->simon->getSprite()->getWidth());
+			this->simon->setDirection(eDirection::right);
+		}
+	}
+
+	if (input->isKeyDown(VK_LEFT) && input->isKeyUp(VK_RIGHT))
+	{
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
+
+		// Handle direction
+		if (this->simon->isInDirection(eDirection::right))
+		{
+			this->simon->setScaleX(-1);
+			this->simon->setPositionX(this->simon->getPosition().x + this->simon->getSprite()->getWidth());
+			this->simon->setDirection(eDirection::left);
+		}
+	}
+
+
 	if (input->isKeyDown(VK_LEFT) || input->isKeyDown(VK_RIGHT))
 	{
 		this->simon->updateHorizontal(dt);
@@ -45,14 +73,14 @@ void SimonStateJumping::handleInput(float dt)
 	{
 		if (input->isKeyDown(VK_Z))
 		{
-			this->animation = jumpFightAnim;
-			this->animation->start();
+			//Xử lý fight của nhân vật
+			/*const SpriteData *data = &(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->fighting]);
+			this->simon->getSprite()->setSpriteDataRect(data->rect);
+			this->simon->getSprite()->setSpriteWidth(data->width);
+			this->simon->getSprite()->setSpriteHeigth(data->height);
+			this->simon->setOrigin(VECTOR2(0, 1.0f));*/
 		}
-		if (input->isKeyUp(VK_Z))
-		{
-			if (animation != nullptr)
-				animation->stop();
-		}
+		
 		if (input->isKeyDown(VK_X))
 		{
 			this->simon->setFall(false);

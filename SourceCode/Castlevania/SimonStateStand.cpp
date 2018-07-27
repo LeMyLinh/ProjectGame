@@ -9,7 +9,7 @@ SimonStateStand::SimonStateStand()
 
 SimonStateStand::SimonStateStand(Simon* simon, Input* input) : BaseState(simon, input)
 {
-	isPressed = false;
+
 }
 
 SimonStateStand::~SimonStateStand()
@@ -18,17 +18,20 @@ SimonStateStand::~SimonStateStand()
 
 void SimonStateStand::init()
 {
-	const SpriteData data = SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand];
-	this->simon->getSprite()->setSpriteDataRect(data.rect);
-	this->simon->getSprite()->setSpriteWidth(data.width);
-	this->simon->getSprite()->setSpriteHeigth(data.height);
+	const SpriteData *data = &(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand]);
+	this->simon->getSprite()->setSpriteDataRect(data->rect);
+	this->simon->getSprite()->setSpriteWidth(data->width);
+	this->simon->getSprite()->setSpriteHeigth(data->height);
+	this->simon->setOrigin(VECTOR2(0, 1.0f));
 
 	if (this->simon->isInDirection(eDirection::left))
 	{
-		const SpriteData data = SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand];
-		this->simon->getSprite()->setSpriteDataRect(data.rect);
-		this->simon->getSprite()->setSpriteWidth(data.width);
-		this->simon->getSprite()->setSpriteHeigth(data.height);
+		const SpriteData *data = &(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand]);
+		this->simon->getSprite()->setSpriteDataRect(data->rect);
+		this->simon->getSprite()->setSpriteWidth(data->width);
+		this->simon->getSprite()->setSpriteHeigth(data->height);
+		this->simon->setOrigin(VECTOR2(0, 1.0f));
+
 		this->simon->getSprite()->flipHorizontal(true);
 	}
 }
@@ -39,7 +42,6 @@ void SimonStateStand::handleInput(float dt)
 	{
 		this->simon->setStatus(eStatus::WALKING);
 		SimonStateManager::getInstance()->changeStateTo(eStatus::WALKING);
-		//simon->walking(dt);
 	}
 
 	if (input->isKeyDown(VK_UP))
@@ -62,19 +64,19 @@ void SimonStateStand::handleInput(float dt)
 
 	if (input->isKeyDown(VK_Z))
 	{
-		this->animation = simon->getFightingAnimation();
-		animation->start();
+		/*this->animation = simon->getFightingAnimation();
+		animation->start();*/
 	}
 
-	if (input->isKeyUp(VK_Z) && this->animation == simon->getFightingAnimation())
-	{		
-		animation->stop();
-	}
+	//if (input->isKeyUp(VK_Z) && this->animation == simon->getFightingAnimation())
+	//{		
+	//	animation->stop();
+	//}
 }
 
 void SimonStateStand::update(float dt)
 {
-		handleInput(dt);
+	this->handleInput(dt);
 }
 
 void SimonStateStand::onStart()

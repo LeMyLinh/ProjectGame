@@ -9,8 +9,8 @@
 #include "BaseObject.h"
 #include "Camera.h"
 
-#define SIMON_VERLOCITY_X 40
-#define SIMON_VERLOCITY_Y 40
+#define SIMON_VERLOCITY_X 20
+#define SIMON_VERLOCITY_Y 20
 #define MAX_JUMP_HEIGHT 80
 
 class Simon : public BaseObject
@@ -39,7 +39,7 @@ public:
 	void update(float dt);
 	void release();
 
-	void updateDirection();
+	//void updateDirection();
 	void updateHorizontal(float dt);
 	void updateVertical(float dt);
 	

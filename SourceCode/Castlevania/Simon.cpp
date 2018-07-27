@@ -11,7 +11,7 @@ Simon::Simon(TextureManager* textureM, Graphics* graphics, Input* input) : BaseO
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not init sprite character");
 	}
 
-	this->sprite->setPosition(VECTOR2(0, GAME_HEIGHT * 0.5));
+	this->sprite->setPosition(VECTOR2(100, GAME_HEIGHT * 0.5));
 	
 	//walkingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
 	//fightingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
@@ -21,7 +21,7 @@ Simon::Simon(TextureManager* textureM, Graphics* graphics, Input* input) : BaseO
 	//down_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_down_stair, FRAME_NUM_SIMON_DOWN_FIGHT, 0.2f);
 	//sit_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_sit, FRAME_NUM_SIMON_SIT_FIGHT, 0.2f);
 	
-	walkingAnimation = new Animation(this->sprite, VECTOR2(0,1.0f), IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
+	walkingAnimation = new Animation(this->sprite, VECTOR2(0,1.0f), IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.3f);
 	fightingAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
 	upStairAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->up_stair, FRAME_NUM_SIMON_UPSTAIR, 0.2f);
 	downStairAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->down_stair, FRAME_NUM_SIMON_DOWNSTAIR, 0.2f);
@@ -55,14 +55,14 @@ void Simon::draw()
 
 void Simon::handleInput(float dt)
 {
-	//SimonStateManager::getInstance()->getCurrentState()->handleInput(dt);
-	updateDirection();
+	SimonStateManager::getInstance()->getCurrentState()->handleInput(dt);
+	//updateDirection();
 }
 
 
 void Simon::update(float dt)
 {
-	updateDirection();
+	//updateDirection();
 	SimonStateManager::getInstance()->getCurrentState()->update(dt);
 }
 
@@ -80,28 +80,28 @@ void Simon::release()
 
 	delete input, sprite, walkingAnimation, fightingAnimation, upStairAnimation, downStairAnimation, up_fight_animation, down_fight_animation, sit_fight_animation;
 }
-void Simon::updateDirection()
-{
-	if (input->isKeyDown(VK_RIGHT))
-	{
-		if (this->isInDirection(eDirection::left))
-		{
-			this->setScaleX(1);
-			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
-			this->setDirection(eDirection::right);
-		}
-	}
-
-	if (input->isKeyDown(VK_LEFT))
-	{
-		if (this->isInDirection(eDirection::right))
-		{
-			this->setScaleX(-1);
-			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
-			this->setDirection(eDirection::left);
-		}
-	}
-}
+//void Simon::updateDirection()
+//{
+//	if (input->isKeyDown(VK_RIGHT))
+//	{
+//		if (this->isInDirection(eDirection::left))
+//		{
+//			this->setScaleX(1);
+//			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
+//			this->setDirection(eDirection::right);
+//		}
+//	}
+//
+//	if (input->isKeyDown(VK_LEFT))
+//	{
+//		if (this->isInDirection(eDirection::right))
+//		{
+//			this->setScaleX(-1);
+//			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
+//			this->setDirection(eDirection::left);
+//		}
+//	}
+//}
 
 void Simon::updateHorizontal(float dt)
 {

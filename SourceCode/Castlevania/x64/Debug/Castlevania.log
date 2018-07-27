@@ -1,13 +1,2 @@
-﻿  Animation.cpp
-  BaseState.cpp
-  Castlevania.cpp
-  Simon.cpp
-  SimonStateJumping.cpp
-  SimonStateManager.cpp
-  SimonStateSitting.cpp
-  SimonStateStand.cpp
-  SimonStateWalking.cpp
-  WinMain.cpp
-e:\hockyhe\projectgame\sourcecode\castlevania\winmain.cpp(63): warning C4244: 'return': conversion from 'WPARAM' to 'int', possible loss of data
-  Generating Code...
+﻿  SimonStateWalking.cpp
   Castlevania.vcxproj -> E:\HocKyHe\ProjectGame\SourceCode\x64\Debug\Castlevania.exe

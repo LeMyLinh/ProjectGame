@@ -4,7 +4,7 @@
 class SimonStateJumping : public BaseState
 {
 private:
-	Animation * jumpFightAnim;
+	//Animation * jumpFightAnim;
 public:
 	SimonStateJumping();
 	SimonStateJumping(Simon *simon, Input *input);

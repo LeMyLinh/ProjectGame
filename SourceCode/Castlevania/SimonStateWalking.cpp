@@ -27,6 +27,40 @@ void SimonStateWalking::init()
 
 void SimonStateWalking::handleInput(float dt)
 {
+	if (input->isKeyDown(VK_RIGHT) && input->isKeyUp(VK_LEFT))
+	{
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
+
+		// Handle direction
+		if (this->simon->isInDirection(eDirection::left))
+		{
+			this->simon->setScaleX(1);
+			this->simon->setPositionX(this->simon->getPosition().x /*- this->simon->getSprite()->getWidth()*/);
+			this->simon->setDirection(eDirection::right);
+		}
+	}
+
+	if (input->isKeyDown(VK_LEFT) && input->isKeyUp(VK_RIGHT))
+	{
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
+
+		// Handle direction
+		if (this->simon->isInDirection(eDirection::right))
+		{
+			this->simon->setScaleX(-1);
+			this->simon->setPositionX(this->simon->getPosition().x /*+ this->simon->getSprite()->getWidth()*/);
+			this->simon->setDirection(eDirection::left);
+		}
+	}
+
+	// Handle horizontal
+	if (input->isKeyDown(VK_LEFT) && input->isKeyDown(VK_RIGHT))
+	{
+		this->simon->updateHorizontal(dt);
+	}
+
 	if (input->isKeyDown(VK_Z))
 	{
 		this->animation->stop();

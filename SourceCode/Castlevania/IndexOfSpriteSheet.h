@@ -26,7 +26,7 @@ public:
 	
 	//Simon
 	const int stand = 1;
-	const int jump = 0;	
+	const int jump = 0;
 	const int walking[4] = { 1, 2, 3, 2 };
 	const int back = 7;
 	const int sit = 0;
