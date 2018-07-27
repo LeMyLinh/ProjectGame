@@ -11,17 +11,24 @@ Simon::Simon(TextureManager* textureM, Graphics* graphics, Input* input) : BaseO
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not init sprite character");
 	}
 
-	this->sprite->setPosition(VECTOR2(0, GAME_HEIGHT * 0.8));
+	this->sprite->setPosition(VECTOR2(0, GAME_HEIGHT * 0.5));
 	
-	walkingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
-	fightingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
-	upStairAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->up_stair, FRAME_NUM_SIMON_UPSTAIR, 0.2f);
-	downStairAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->down_stair, FRAME_NUM_SIMON_DOWNSTAIR, 0.2f);
-	up_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_up_stair, FRAME_NUM_SIMON_UP_FIGHT, 0.2f);
-	down_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_down_stair, FRAME_NUM_SIMON_DOWN_FIGHT, 0.2f);
-	sit_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_sit, FRAME_NUM_SIMON_SIT_FIGHT, 0.2f);
+	//walkingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
+	//fightingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
+	//upStairAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->up_stair, FRAME_NUM_SIMON_UPSTAIR, 0.2f);
+	//downStairAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->down_stair, FRAME_NUM_SIMON_DOWNSTAIR, 0.2f);
+	//up_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_up_stair, FRAME_NUM_SIMON_UP_FIGHT, 0.2f);
+	//down_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_down_stair, FRAME_NUM_SIMON_DOWN_FIGHT, 0.2f);
+	//sit_fight_animation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fight_sit, FRAME_NUM_SIMON_SIT_FIGHT, 0.2f);
 	
-	
+	walkingAnimation = new Animation(this->sprite, VECTOR2(0,1.0f), IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
+	fightingAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
+	upStairAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->up_stair, FRAME_NUM_SIMON_UPSTAIR, 0.2f);
+	downStairAnimation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->down_stair, FRAME_NUM_SIMON_DOWNSTAIR, 0.2f);
+	up_fight_animation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->fight_up_stair, FRAME_NUM_SIMON_UP_FIGHT, 0.2f);
+	down_fight_animation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->fight_down_stair, FRAME_NUM_SIMON_DOWN_FIGHT, 0.2f);
+	sit_fight_animation = new Animation(this->sprite, VECTOR2(0, 1.0f), IndexOfSpriteSheet::getInstance()->fight_sit, FRAME_NUM_SIMON_SIT_FIGHT, 0.2f);
+
 	SimonStateManager::getInstance()->init(this, input);
 	this->isFalling = false;
 	this->totalJumpHeight = 0;
@@ -37,33 +44,6 @@ Simon::~Simon()
 	this->release();
 }
 
-
-//void Simon::setRect()
-//{
-//	//switch (this->status)
-//	//{
-//	//case eStatus::NORMAL:
-//	//{
-//	//	this->sprite->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->front].rect);
-//	//	break;
-//	//}
-//	//case eStatus::DIEING:
-//	//{
-//	//	this->sprite->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->dieing].rect);
-//	//	break;
-//	//}
-//	//case eStatus::JUMPING:
-//	//{
-//	//	this->sprite->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->jump].rect);
-//	//	break;
-//	//}
-//	//default:
-//	//	break;
-//	//}
-//
-//	this->sprite->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand].rect);
-//
-//}
 
 void Simon::draw()
 {
@@ -82,52 +62,6 @@ void Simon::handleInput(float dt)
 
 void Simon::update(float dt)
 {
-	//if (input->wasKeyPressed(VK_RIGHT))
-	//{
-	//	this->setStatus(eStatus::WALKING);
-
-	//	if (currentAnimation != nullptr)
-	//		currentAnimation->stop();
-
-	//	this->sprite->flipHorizontal(true);
-	//	currentAnimation = walkingAnimation;
-	//	currentAnimation->start();
-	//}
-	//if (input->wasKeyPressed(VK_LEFT))
-	//{
-	//	this->setStatus(eStatus::WALKING);
-
-	//	if (currentAnimation != nullptr)
-	//		currentAnimation->stop();
-
-	//	this->sprite->flipHorizontal(false);
-	//	currentAnimation = walkingAnimation;
-	//	currentAnimation->start();
-	//}
-	//if (input->wasKeyPressed(X_KEY))
-	//{
-	//	this->setStatus(eStatus::JUMPING);
-	//	if (currentAnimation != nullptr)
-	//		currentAnimation->stop();
-
-	//	this->setRect();
-	//}
-	//if (input->wasKeyPressed(VK_DOWN))
-	//{
-	//	this->setStatus(eStatus::FIGHTING);
-
-	//	if (currentAnimation != nullptr)
-	//		currentAnimation->stop();
-
-	//	currentAnimation = fightingAnimation;
-	//	currentAnimation->start();
-	//}
-
-	//if (currentAnimation != nullptr)
-	//{
-	//	currentAnimation->update(dt);
-	//}
-
 	updateDirection();
 	SimonStateManager::getInstance()->getCurrentState()->update(dt);
 }
@@ -152,7 +86,7 @@ void Simon::updateDirection()
 	{
 		if (this->isInDirection(eDirection::left))
 		{
-			this->setScaleX(-1);
+			this->setScaleX(1);
 			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
 			this->setDirection(eDirection::right);
 		}
@@ -162,9 +96,9 @@ void Simon::updateDirection()
 	{
 		if (this->isInDirection(eDirection::right))
 		{
-			this->setScaleX(1);
+			this->setScaleX(-1);
 			this->setPositionX(this->getPosition().x - this->getSprite()->getWidth());
-			this->setDirection(eDirection::right);
+			this->setDirection(eDirection::left);
 		}
 	}
 }

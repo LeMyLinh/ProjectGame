@@ -9,8 +9,8 @@
 #include "BaseObject.h"
 #include "Camera.h"
 
-#define SIMON_VERLOCITY_X 60
-#define SIMON_VERLOCITY_Y 60
+#define SIMON_VERLOCITY_X 40
+#define SIMON_VERLOCITY_Y 40
 #define MAX_JUMP_HEIGHT 80
 
 class Simon : public BaseObject

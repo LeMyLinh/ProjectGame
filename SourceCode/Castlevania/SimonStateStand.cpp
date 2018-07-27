@@ -22,6 +22,15 @@ void SimonStateStand::init()
 	this->simon->getSprite()->setSpriteDataRect(data.rect);
 	this->simon->getSprite()->setSpriteWidth(data.width);
 	this->simon->getSprite()->setSpriteHeigth(data.height);
+
+	if (this->simon->isInDirection(eDirection::left))
+	{
+		const SpriteData data = SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->stand];
+		this->simon->getSprite()->setSpriteDataRect(data.rect);
+		this->simon->getSprite()->setSpriteWidth(data.width);
+		this->simon->getSprite()->setSpriteHeigth(data.height);
+		this->simon->getSprite()->flipHorizontal(true);
+	}
 }
 
 void SimonStateStand::handleInput(float dt)
@@ -51,7 +60,16 @@ void SimonStateStand::handleInput(float dt)
 		//Xử lý nếu gần cầu thang
 	}
 
+	if (input->isKeyDown(VK_Z))
+	{
+		this->animation = simon->getFightingAnimation();
+		animation->start();
+	}
 
+	if (input->isKeyUp(VK_Z) && this->animation == simon->getFightingAnimation())
+	{		
+		animation->stop();
+	}
 }
 
 void SimonStateStand::update(float dt)

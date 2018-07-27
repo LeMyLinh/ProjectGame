@@ -20,7 +20,9 @@ private:
 public:
 	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim, bool loop);
 	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim);
-	//Animation();
+	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeAnim, bool loop);
+	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeAnim);
+
 	~Animation();
 
 	void nextFrame();
