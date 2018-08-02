@@ -18,37 +18,38 @@ void SimonStateSitting::init()
 {
 	sitFightingAnim = simon->getSitFightAnimation();
 	
-	this->simon->getSprite()->setSpriteDataRect(SpriteManager::getInstance()->getSpritesData()[IndexOfSpriteSheet::getInstance()->sit].rect);
+	this->simon->getSprite()->setDataSprite(IndexOfSpriteSheet::getInstance()->sit);
+
+	this->simon->setPosition(this->simon->getPosition().x, this->simon->getPosition().y - 15);
 }
 
 void SimonStateSitting::handleInput(float dt)
 {
 	if (input->isKeyDown(VK_RIGHT) && input->isKeyUp(VK_LEFT))
 	{
-		// Handle horizontal
-		this->simon->updateHorizontal(dt);
-
 		// Handle direction
 		if (this->simon->isInDirection(eDirection::left))
 		{
 			this->simon->setScaleX(1);
-			this->simon->setPositionX(this->simon->getPosition().x - this->simon->getSprite()->getWidth());
+			//this->simon->setPositionX(this->simon->getPosition().x - this->simon->getSprite()->getWidth());
 			this->simon->setDirection(eDirection::right);
 		}
+
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
 	}
 
 	if (input->isKeyDown(VK_LEFT) && input->isKeyUp(VK_RIGHT))
-	{
-		// Handle horizontal
-		this->simon->updateHorizontal(dt);
-
+	{	
 		// Handle direction
 		if (this->simon->isInDirection(eDirection::right))
 		{
 			this->simon->setScaleX(-1);
-			this->simon->setPositionX(this->simon->getPosition().x + this->simon->getSprite()->getWidth());
+			//this->simon->setPositionX(this->simon->getPosition().x + this->simon->getSprite()->getWidth());
 			this->simon->setDirection(eDirection::left);
 		}
+		// Handle horizontal
+		this->simon->updateHorizontal(dt);
 	}
 
 	if (input->isKeyDown(VK_UP))
@@ -81,7 +82,7 @@ void SimonStateSitting::handleInput(float dt)
 void SimonStateSitting::update(float dt)
 {
 	//this->animation->update(dt);
-	handleInput(dt);
+	//handleInput(dt);
 }
 
 void SimonStateSitting::onStart()

@@ -10,15 +10,17 @@ protected:
 	eStatus status;
 	eDirection direction;
 
+	Rect  boundCollision;
+	VECTOR2 velocity;
+
 public:
 	BaseObject(eID id);
 	BaseObject();
 	~BaseObject();
 
-	virtual void handleInput(float dt) = 0;
-	virtual void update(float dt) = 0;
-	virtual void draw() = 0;
-	virtual void release() = 0;
+	//virtual void handleInput(float dt) = 0;
+	virtual void update(float dt);
+	virtual void draw();
 
 	eID getId();
 	eStatus getStatus();
@@ -51,10 +53,16 @@ public:
 
 	Sprite* getSprite();
 
-	virtual float checkCollision(BaseObject* object, float dt);
+	//TO DO: update position, velocity... if this object collide with another object(call before update() )
+	virtual void onCollision(BaseObject* object, float dt);
 
-	//virtual GVector2 getVelocity() = 0;
+	virtual void setBoundCollision(Rect rect);
+	virtual Rect getBoundCollision();
 
-	//virtual void setPhysicsBodySide(eDirection side);
-	//virtual eDirection getPhysicsBodySide();
+	virtual void setFlipX(bool flipX) { sprite->setFlipX(flipX); }
+	virtual void setFlipY(bool flipY) { sprite->setFlipY(flipY); }
+	virtual VECTOR2 getVelocity();
+	virtual void setVelocityX(float x);
+	virtual void setVelocityY(float y);
+	virtual void setVelocity(VECTOR2 velocity);	
 };

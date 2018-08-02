@@ -45,7 +45,7 @@ const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 256;     //32x2x8          // width of game in pixels
 const UINT GAME_HEIGHT = 176;    //32x5.5           // height of game in pixels
 const UINT WINDOW_WIDTH = 256;
-const UINT WINDOW_HEIGHT = 224;
+const UINT WINDOW_HEIGHT = 224;//224
 // Game Manger
 const double PI = 3.14159265;
 const float FRAME_RATE = 60.0f;                // the target frame rate (frames/sec)
@@ -69,10 +69,26 @@ const char SOURCE_JSON[] = "Resouces\\SpriteSheet.json";
 const char MAP_LEVEL5[] = "Resouces\\Json\\MapLevel5.json";
 const char TILESET_LV5_IMAGE[] = "Resouces\\TileSheetLevel5.png";
 
+//Define rectangle
+struct Rect
+{
+	float top, left, right, bottom;
+};
 
 // Element ID
 enum eID {
 	SIMON = 0,
+	WHITE_SKELETON = 1,
+	WALL = 2,
+};
+
+enum CollideDirection
+{
+	TOP,
+	LEFT,
+	RIGHT,
+	BOTTOM,
+	NONE
 };
 
 // Element's status

@@ -1,7 +1,7 @@
 #include "Animation.h"
 
 
-Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim, bool loop)
+Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float timeFrameDelay, bool loop)
 {
 	this->sprite = sprite;
 	this->listFrames = list;
@@ -10,7 +10,7 @@ Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float tim
 	this->startFrame = 0;
 	this->isloop = loop;
 	this->isCompleted = false;
-	this->frameDelay = timeAnim;
+	this->frameDelay = timeFrameDelay;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 
@@ -19,14 +19,14 @@ Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float tim
 	//this->sprite->setSpriteHeigth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].height);
 }
 
-Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float timeAnim)
+Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float timeFrameDelay)
 {
 	this->sprite = sprite;
 	this->listFrames = list;
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	this->frameDelay = timeAnim;
+	this->frameDelay = timeFrameDelay;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 	this->isCompleted = false;
@@ -37,7 +37,7 @@ Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float ti
 	//this->sprite->setSpriteHeigth(SpriteManager::getInstance()->getSpritesData()[this->listFrames[0]].height);
 }
 
-Animation::Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeAnim, bool loop)
+Animation::Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeFrameDelay, bool loop)
 {
 	this->sprite = sprite;
 	this->listFrames = list;
@@ -46,20 +46,20 @@ Animation::Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalF
 	this->startFrame = 0;
 	this->isloop = loop;
 	this->isCompleted = false;
-	this->frameDelay = timeAnim;
+	this->frameDelay = timeFrameDelay;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 	this->origin = origin;
 }
 
-Animation::Animation(Sprite *sprite, VECTOR2 origin, const int * list, int totalFrames, float timeAnim)
+Animation::Animation(Sprite *sprite, VECTOR2 origin, const int * list, int totalFrames, float timeFrameDelay)
 {
 	this->sprite = sprite;
 	this->listFrames = list;
 	this->totalFrames = totalFrames;
 	this->currentFrame = -1;
 	this->startFrame = 0;
-	this->frameDelay = timeAnim;
+	this->frameDelay = timeFrameDelay;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 	this->isCompleted = false;
@@ -143,4 +143,15 @@ void Animation::stop()
 bool Animation::isFinished()
 {
 	return isCompleted;
+}
+
+void Animation::setTimeFrameDelay(float time)
+{
+	if (this->frameDelay != time)
+		this->frameDelay = time;
+}
+
+float Animation::getTimeFrameDelay()
+{
+	return this->frameDelay;
 }

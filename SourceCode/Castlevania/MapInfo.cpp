@@ -10,6 +10,7 @@ MapInfo::MapInfo()
 
 MapInfo::~MapInfo()
 {
+	//delete mapCell**
 	if (map != NULL)
 	{
 		for (size_t i = 0; i < mapHeight; i++)
@@ -19,6 +20,13 @@ MapInfo::~MapInfo()
 		}
 		delete[] map;
 	}
+
+	// delete vector rect*
+	for (std::vector< RECT* >::iterator it = listRectOfMapCell->begin(); it != listRectOfMapCell->end(); ++it)
+	{
+		delete (*it);
+	}
+	listRectOfMapCell->clear();
 
 	delete listRectOfMapCell;
 }

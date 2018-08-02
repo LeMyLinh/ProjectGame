@@ -31,6 +31,18 @@
     <Filter Include="Header Files\Object\Simon">
       <UniqueIdentifier>{bb44f3c0-8f5d-4900-9772-73b741d4b185}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Object\Enemy">
+      <UniqueIdentifier>{cbab13a6-7fea-4c6d-aab4-8e7fe88213c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Enemy">
+      <UniqueIdentifier>{e7f69517-03f4-4893-8482-75ea52afc9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{f036072f-b176-422b-8fb6-32de120a9ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Map">
+      <UniqueIdentifier>{d0580b97-4699-49bd-b6c2-7d458245a873}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -69,12 +81,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IndexOfSpriteSheet.h">
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
@@ -98,6 +104,21 @@
     </ClInclude>
     <ClInclude Include="SimonStateJumping.h">
       <Filter>Header Files\Object\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteSkeleton.h">
+      <Filter>Header Files\Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapInfo.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,12 +155,6 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IndexOfSpriteSheet.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
@@ -163,6 +178,21 @@
     </ClCompile>
     <ClCompile Include="SimonStateJumping.cpp">
       <Filter>Source Files\Object\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteSkeleton.cpp">
+      <Filter>Source Files\Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapInfo.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

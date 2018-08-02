@@ -20,5 +20,9 @@ public:
 	virtual void update(float dt) = 0;
 
 	virtual void onStart() = 0;
-	virtual void onExit() = 0; // Call samus do anthing before exit state
+	virtual void onExit() = 0;
+
+	virtual void setBoundCollision();
+	virtual void onCollision(BaseObject* obj, float dt);
+	virtual void onCollisionBullet(BaseObject* obj, float dt);
 };

@@ -1,6 +1,6 @@
 #include "Castlevania.h"
-
-
+#include "ObjectManager.h"
+#include "Collision.h"
 
 Castlevania::Castlevania()
 {
@@ -15,16 +15,24 @@ Castlevania::Castlevania()
 
 Castlevania::~Castlevania()
 {
-	delete simon;
 	textureManager->onLostDevice();
 	spriteManager->releaseAll();
+
 
 	tileset->onLostDevice();
 	delete mapInfo;
 	delete mapLevel5;
+
+	delete simon;
+
+	delete whiteSkeleton;
+
+	ObjectManager::getInstance()->release();
+	Collision::getInstance()->release();
 }
 
 Castlevania* Castlevania::instance = nullptr;
+
 Castlevania * Castlevania::getInstance()
 {
 	if (instance == nullptr)
@@ -41,7 +49,7 @@ void Castlevania::initialize(HWND hwnd)
 	{
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not  load json");
 	}
-	if (!textureManager->initialize(graphics, SOURCE_IMAGE, 0, 0))
+	if (!textureManager->initialize(graphics, SOURCE_IMAGE))
 	{
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load image");
 	}
@@ -57,41 +65,56 @@ void Castlevania::initialize(HWND hwnd)
 
 	if (!mapLevel5->initialize(graphics, tileset, mapInfo))
 	{
-		throw GameError(GameErrorNS::FATAL_ERROR, "Can not initalize map brinstar");
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not initalize map level5");
 	}
 
-	camera = new Camera(GAME_WIDTH, GAME_HEIGHT + 8);
+	camera = new Camera(GAME_WIDTH, GAME_HEIGHT);
 	//camera->setPosition(VECTOR2(768 + 4 * 32,640 + 176/2));
-	//camera->setPosition(VECTOR2(0, 0));
+	//camera->setPosition(VECTOR2(880, 832));
+	camera->setPosition(VECTOR2(896, 778));
 
 	mapLevel5->setCamera(camera);
 
 	simon = new Simon(textureManager, graphics, input);
 	simon->setCamera(this->camera);
-	//simon->setPosition(VECTOR2(864, 800));
+	//simon->setPosition(VECTOR2(880, 832));
+
+	whiteSkeleton = new WhiteSkeleton(textureManager, graphics);
 }
 
 void Castlevania::update(float dt)
 {
 	simon->update(dt);
 
-	camera->setPosition(simon->getPosition());
+	whiteSkeleton->setTarget(VECTOR2(simon->getPosition().x + simon->getSprite()->getWidth() * 0.5f, simon->getPosition().y));
+	whiteSkeleton->update(dt);
+
+	//camera->setPosition(simon->getPosition());
+	this->camera->update(dt);
 }
 
-void Castlevania::ai()
+void Castlevania::handleInput(float dt)
 {
-
+	simon->handleInput(dt);
 }
 
-void Castlevania::collisions()
+void Castlevania::collisions(float dt)
 {
+	simon->handleInput(dt);
 
+	ObjectManager::getInstance()->onCheckCollision(simon, dt);
 }
 
 void Castlevania::render()
 {
+	this->getGraphics()->spriteBegin();
 	mapLevel5->draw();
 	simon->draw();
+		
+
+	whiteSkeleton->draw();
+
+	this->getGraphics()->spriteEnd();
 }
 
 void Castlevania::releaseAll()
@@ -102,4 +125,9 @@ void Castlevania::releaseAll()
 void Castlevania::resetAll()
 {
 	GameManager::resetAll();
+}
+
+HWND Castlevania::getCurrentHWND()
+{
+	return this->hwnd;
 }

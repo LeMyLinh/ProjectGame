@@ -4,7 +4,7 @@
 class SimonStateStand : public BaseState
 {
 private:
-	bool isPressed;
+	float timeToWalk;
 
 public:
 	SimonStateStand();
@@ -12,6 +12,8 @@ public:
 	~SimonStateStand();
 
 	void init();
+	void setBoundCollision();
+
 	void handleInput(float dt);
 	void update(float dt);
 

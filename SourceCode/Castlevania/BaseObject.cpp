@@ -20,6 +20,14 @@ BaseObject::~BaseObject()
 {
 }
 
+void BaseObject::update(float dt)
+{
+}
+
+void BaseObject::draw()
+{
+}
+
 eID BaseObject::getId()
 {
 	return this->id;
@@ -88,7 +96,7 @@ void BaseObject::setPositionX(float x)
 
 void BaseObject::setPositionY(float y)
 {
-	this->sprite->setPositionX(y);
+	this->sprite->setPositionY(y);
 }
 
 VECTOR2 BaseObject::getScale()
@@ -138,7 +146,37 @@ Sprite * BaseObject::getSprite()
 }
 
 
-float BaseObject::checkCollision(BaseObject * object, float dt)
+void BaseObject::onCollision(BaseObject * object, float dt)
 {
-	return 0.0f;
+
+}
+
+void BaseObject::setBoundCollision(Rect rect)
+{
+	this->boundCollision = rect;
+}
+
+Rect BaseObject::getBoundCollision()
+{
+	return boundCollision;
+}
+
+VECTOR2 BaseObject::getVelocity()
+{
+	return velocity;
+}
+
+void BaseObject::setVelocityX(float x)
+{
+	velocity.x = x;
+}
+
+void BaseObject::setVelocityY(float y)
+{
+	velocity.y = y;
+}
+
+void BaseObject::setVelocity(VECTOR2 velocity)
+{
+	this->velocity = velocity;
 }

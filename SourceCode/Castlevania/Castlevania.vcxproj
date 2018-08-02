@@ -24,6 +24,7 @@
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Castlevania.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="GameError.h" />
     <ClInclude Include="GameManager.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapInfo.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Simon.h" />
     <ClInclude Include="SimonStateJumping.h" />
     <ClInclude Include="SimonStateManager.h" />
@@ -41,6 +43,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="WhiteSkeleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -48,12 +51,14 @@
     <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Castlevania.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="IndexOfSpriteSheet.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapInfo.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Simon.cpp" />
     <ClCompile Include="SimonStateJumping.cpp" />
     <ClCompile Include="SimonStateManager.cpp" />
@@ -63,6 +68,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="WhiteSkeleton.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>

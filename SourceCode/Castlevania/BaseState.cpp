@@ -25,3 +25,15 @@ BaseState::~BaseState()
 	this->animation = nullptr;
 	delete this->animation;
 }
+
+void BaseState::setBoundCollision()
+{
+}
+
+void BaseState::onCollision(BaseObject * obj, float dt)
+{
+}
+
+void BaseState::onCollisionBullet(BaseObject * obj, float dt)
+{
+}

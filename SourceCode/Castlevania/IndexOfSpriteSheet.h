@@ -38,5 +38,8 @@ public:
 	const int up_stair[2] = { 5,2 };
 	const int dieing = 8;
 
+	//Enemy
+	//White Skeleton
+	const int whiteSkeleton[2] = { 22, 23 };
 };
 

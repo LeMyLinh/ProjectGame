@@ -19,7 +19,6 @@ Sprite::Sprite()
 	textureManager = NULL;
 	spriteManager = NULL;
 	graphics = NULL;                // link to graphics system
-	colorFilter = GraphicsNS::WHITE; // WHITE for no change
 }
 
 
@@ -62,29 +61,8 @@ void Sprite::draw(COLOR_ARGB color)
 		return;
 	// get fresh texture incase onReset() was called
 	spriteData.texture = textureManager->getTexture();
-	if (color == GraphicsNS::FILTER)                     // if draw with filter
-		graphics->drawSprite(spriteData, colorFilter);  // use colorFilter
-	else
-		graphics->drawSprite(spriteData, color);        // use color as filter
-}
 
-//=============================================================================
-// Draw this image using the specified SpriteData.
-//   The current SpriteData.rect is used to select the texture.
-// Pre : spriteBegin() is called
-// Post: spriteEnd() is called
-//=============================================================================
-void Sprite::draw(SpriteData sd, COLOR_ARGB color)
-{
-	if (graphics == NULL)
-		return;
-	sd.rect = spriteData.rect;                  // use this Images rect to select texture
-	sd.texture = textureManager->getTexture();  // get fresh texture incase onReset() was called
-
-	if (color == GraphicsNS::FILTER)             // if draw with filter
-		graphics->drawSprite(sd, colorFilter);  // use colorFilter
-	else
-		graphics->drawSprite(sd, color);        // use color as filter
+	graphics->drawSprite(spriteData, color);
 }
 
 //=============================================================================
@@ -94,4 +72,13 @@ void Sprite::draw(SpriteData sd, COLOR_ARGB color)
 //=============================================================================
 void Sprite::update(float dt)
 {
+}
+
+void Sprite::setDataSprite(int index)
+{
+	const SpriteData *data = &(SpriteManager::getInstance()->getSpritesData()[index]);
+
+	this->setSpriteDataRect(data->rect);
+	this->setSpriteWidth(data->width);
+	this->setSpriteHeigth(data->height);
 }

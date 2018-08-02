@@ -11,7 +11,13 @@
 
 #define SIMON_VERLOCITY_X 20
 #define SIMON_VERLOCITY_Y 20
-#define MAX_JUMP_HEIGHT 80
+#define MIN_JUMP 32
+#define MAX_JUMP 80
+#define SIMON_HEIGHT 32
+#define MAX_WIDTH 16
+#define MAX_HEIGHT 31
+#define WIDTH_WALK 16
+#define HEIGHT_WALK 31
 
 class Simon : public BaseObject
 {
@@ -26,6 +32,11 @@ private:
 		*sit_fight_animation;
 
 	bool isFalling;
+	bool moveRight;
+	bool moveLeft;
+	bool jump;
+	bool moveHorizontal;
+	bool moveVertical;
 	float totalJumpHeight;
 	Camera* camera;
 
@@ -44,7 +55,14 @@ public:
 	void updateVertical(float dt);
 	
 	bool isFall();
+	bool canMoveleft();
+	bool canMoveRight();
+	bool isJump();
+
 	void setFall(bool isFall);
+	void setCanMoveRight(bool moveRight);
+	void setCanMoveLeft(bool moveLeft);
+	void setJump(bool jump);
 
 	//Animation* getStartingAnim();
 	Animation* getWalkingAnimation();
@@ -56,4 +74,6 @@ public:
 	Animation* getSitFightAnimation();
 
 	void setCamera(Camera* cam);
+
+	void onCollision(BaseObject *object, float dt);
 };

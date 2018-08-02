@@ -18,18 +18,23 @@ private:
 	VECTOR2 origin;
 
 public:
-	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim, bool loop);
-	Animation(Sprite *sprite, const int* list, int totalFrames, float timeAnim);
-	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeAnim, bool loop);
-	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeAnim);
+	Animation(Sprite *sprite, const int* list, int totalFrames, float timeFrameDelay, bool loop);
+	Animation(Sprite *sprite, const int* list, int totalFrames, float timeFrameDelay);
+	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeFrameDelay, bool loop);
+	Animation(Sprite *sprite, VECTOR2 origin, const int* list, int totalFrames, float timeFrameDelay);
 
 	~Animation();
 
 	void nextFrame();
+
 	void setValueOfCurrentFrame(int index);
 	int getCurrentFrame();
 	void update(float dt);
+
 	void start();
 	void stop();
 	bool isFinished();
+
+	void setTimeFrameDelay(float time);
+	float getTimeFrameDelay();
 };
