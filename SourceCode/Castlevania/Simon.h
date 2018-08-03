@@ -7,7 +7,6 @@
 #include "GameError.h"
 #include "Animation.h"
 #include "BaseObject.h"
-#include "Camera.h"
 
 #define SIMON_VERLOCITY_X 20
 #define SIMON_VERLOCITY_Y 20
@@ -18,6 +17,11 @@
 #define MAX_HEIGHT 31
 #define WIDTH_WALK 16
 #define HEIGHT_WALK 31
+
+
+//In map
+#define START_POSITION_X 864
+#define START_POSITION_Y 800
 
 class Simon : public BaseObject
 {
@@ -38,7 +42,6 @@ private:
 	bool moveHorizontal;
 	bool moveVertical;
 	float totalJumpHeight;
-	Camera* camera;
 
 public:
 	Simon(TextureManager* textureM, Graphics* graphics, Input* input);
@@ -73,7 +76,6 @@ public:
 	Animation* getDownFightAnimation();
 	Animation* getSitFightAnimation();
 
-	void setCamera(Camera* cam);
 
 	void onCollision(BaseObject *object, float dt);
 };

@@ -1,3 +1,4 @@
-﻿  SimonStateWalking.cpp
-e:\hockyhe\projectgame\sourcecode\castlevania\simonstatewalking.cpp(176): warning C4101: 'addX': unreferenced local variable
+﻿  Castlevania.cpp
+  SimonStateStand.cpp
+  Generating Code...
   Castlevania.vcxproj -> E:\HocKyHe\ProjectGame\SourceCode\x64\Debug\Castlevania.exe

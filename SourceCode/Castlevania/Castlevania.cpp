@@ -71,22 +71,28 @@ void Castlevania::initialize(HWND hwnd)
 	camera = new Camera(GAME_WIDTH, GAME_HEIGHT);
 	//camera->setPosition(VECTOR2(768 + 4 * 32,640 + 176/2));
 	//camera->setPosition(VECTOR2(880, 832));
-	camera->setPosition(VECTOR2(896, 778));
+	camera->setPosition(VECTOR2(CAM_POS_X, CAM_POS_Y));
 
-	mapLevel5->setCamera(camera);
+	ObjectManager::getInstance()->init(textureManager, graphics);
+
+	if (!ObjectManager::getInstance()->load_list(OBJECT_LAYER_LEVEL5))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load object layer level5 json");
+	}
 
 	simon = new Simon(textureManager, graphics, input);
-	simon->setCamera(this->camera);
+	//simon->setCamera(this->camera);
 	//simon->setPosition(VECTOR2(880, 832));
 
 	whiteSkeleton = new WhiteSkeleton(textureManager, graphics);
+	//whiteSkeleton->setCamera(this->camera);
 }
 
 void Castlevania::update(float dt)
 {
 	simon->update(dt);
 
-	whiteSkeleton->setTarget(VECTOR2(simon->getPosition().x + simon->getSprite()->getWidth() * 0.5f, simon->getPosition().y));
+	whiteSkeleton->setTarget(VECTOR2(932, 798));
 	whiteSkeleton->update(dt);
 
 	//camera->setPosition(simon->getPosition());
@@ -95,12 +101,12 @@ void Castlevania::update(float dt)
 
 void Castlevania::handleInput(float dt)
 {
-	simon->handleInput(dt);
+	simon->handleInput(dt);	
 }
 
 void Castlevania::collisions(float dt)
 {
-	simon->handleInput(dt);
+	//simon->handleInput(dt);
 
 	ObjectManager::getInstance()->onCheckCollision(simon, dt);
 }

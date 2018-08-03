@@ -14,10 +14,10 @@ WhiteSkeleton::WhiteSkeleton(TextureManager *texture, Graphics *graphics) : Base
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not init sprite White Skeleton");
 	}
 
-	whiteAnimation = new Animation(this->sprite, VECTOR2(1.0f, 1.0f), IndexOfSpriteSheet::getInstance()->whiteSkeleton, 2, 0.2f);
+	whiteAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->whiteSkeleton, 2, 0.2f);
 	whiteAnimation->start();
 
-	this->startPosition = VECTOR2(200, GAME_HEIGHT);
+	this->startPosition = VECTOR2(880, 798);
 	this->target = VECTOR2ZERO;
 	this->setPosition(this->startPosition);
 
@@ -27,6 +27,7 @@ WhiteSkeleton::WhiteSkeleton(TextureManager *texture, Graphics *graphics) : Base
 
 WhiteSkeleton::~WhiteSkeleton()
 {
+	delete whiteAnimation;
 }
 
 void WhiteSkeleton::update(float dt)
@@ -52,11 +53,8 @@ void WhiteSkeleton::update(float dt)
 
 void WhiteSkeleton::draw()
 {
-	//if (this->camera)
-	//	this->sprite->setTransformCamera(VECTOR2(GAME_WIDTH*0.5f - camera->getPosition().x, GAME_HEIGHT - camera->getPosition().y));
-
 	if (this->sprite != nullptr)
-		this->sprite->draw();
+	this->sprite->draw();
 }
 
 void WhiteSkeleton::release()

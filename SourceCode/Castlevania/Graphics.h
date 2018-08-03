@@ -32,6 +32,7 @@ namespace GraphicsNS
 	const COLOR_ARGB BLUE = D3DCOLOR_ARGB(255, 0, 0, 255);
 	const COLOR_ARGB BLACK = D3DCOLOR_ARGB(255, 0, 0, 0);
 	const COLOR_ARGB BACK_COLOR = BLACK;                         // background color of game
+	const COLOR_ARGB FILTER = D3DCOLOR_ARGB(0, 0, 0, 0);
 }
 
 // SpriteData: The properties required by Graphics::drawSprite to draw a sprite
@@ -47,7 +48,6 @@ struct SpriteData
 	LP_TEXTURE  texture;    // pointer to texture
 	bool        flipHorizontal; // true to flip sprite horizontally (mirror)
 	bool        flipVertical;   // true to flip sprite vertically
-	VECTOR2		transformCamera;
 };
 
 

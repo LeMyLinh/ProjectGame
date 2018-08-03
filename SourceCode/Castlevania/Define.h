@@ -68,7 +68,7 @@ const char SOURCE_IMAGE[] = "Resouces\\SpriteSheet.png";
 const char SOURCE_JSON[] = "Resouces\\SpriteSheet.json"; 
 const char MAP_LEVEL5[] = "Resouces\\Json\\MapLevel5.json";
 const char TILESET_LV5_IMAGE[] = "Resouces\\TileSheetLevel5.png";
-
+const char OBJECT_LAYER_LEVEL5[] = "Resouces\\Json\\ObjectLayerLevel5.json";
 //Define rectangle
 struct Rect
 {

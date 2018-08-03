@@ -8,6 +8,7 @@
 #include "BaseObject.h"
 #include "Graphics.h"
 #include "Define.h"
+#include "Camera.h"
 
 using namespace rapidjson;
 using namespace std;
@@ -16,16 +17,27 @@ class ObjectManager
 private:
 	list<BaseObject> object_list;
 	static ObjectManager* instance;
+
+	Camera *camera;
+	TextureManager *texttureManager;
+	Graphics *graphics;
+
 public:
 	list<BaseObject>& getEntityList() { return object_list; };
+
+	void init(TextureManager *textureM, Graphics *graphics);
+
+	bool load_list(const char *filename);
+
 	//get instance
 	static ObjectManager* getInstance();
 	//check collide between entity with another object
 	void onCheckCollision(BaseObject* entity, float frametime);
-	bool load_list(const char *filename);
 
 	ObjectManager();
 	~ObjectManager();
 
 	void release();
+
+	void setCamera(Camera *cam);
 };

@@ -1,5 +1,6 @@
 #include "Simon.h"
 #include "SimonStateManager.h"
+#include "Camera.h"
 
 Simon::Simon(TextureManager* textureM, Graphics* graphics, Input* input) : BaseObject(eID::SIMON)
 {
@@ -11,7 +12,7 @@ Simon::Simon(TextureManager* textureM, Graphics* graphics, Input* input) : BaseO
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not init sprite character");
 	}
 
-	this->sprite->setPosition(VECTOR2(864, 798 - 54));
+	this->sprite->setPosition(VECTOR2(864, 832));
 	
 	walkingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->walking, FRAME_NUM_SIMON_WALKING, 0.2f);
 	fightingAnimation = new Animation(this->sprite, IndexOfSpriteSheet::getInstance()->fighting, FRAME_NUM_SIMON_FIGHTING, 0.2f);
@@ -52,34 +53,33 @@ Simon::~Simon()
 
 void Simon::draw()
 {
-	if (this->camera)
-		this->sprite->setTransformCamera(VECTOR2(GAME_WIDTH * 0.5f - camera->getPosition().x, GAME_HEIGHT - camera->getPosition().y));
-	
 	this->sprite->draw();
 }
 
 void Simon::handleInput(float dt)
 {
 	SimonStateManager::getInstance()->getCurrentState()->handleInput(dt);
-	if (this->camera->canFollowHorizon())
+	if (Camera::getInstance()->canFollowHorizon())
 	{
-		if ((input->isKeyUp(VK_LEFT) && input->isKeyUp(VK_RIGHT)) || (input->isKeyDown(VK_LEFT) && input->isKeyDown(VK_RIGHT)))
-			this->camera->setVelocity(VECTOR2(this->getVelocity().x, 0));
+		if ((input->isKeyUp(VK_LEFT) && input->isKeyUp(VK_RIGHT)) || (input->isKeyDown(VK_LEFT) && input->isKeyDown(VK_RIGHT)) || this->isInStatus(eStatus::STANDING))
+			Camera::getInstance()->setVelocity(VECTOR2(this->getVelocity().x, 0));
 	}
 }
 
 
 void Simon::update(float dt)
 {
-	if (this->camera->canFollowHorizon())
+	if (Camera::getInstance()->canFollowHorizon())
 	{
-		if ((this->getPosition().x > this->camera->getActiveArea().right) || (this->getPosition().x < this->camera->getActiveArea().left))
-			this->camera->setVelocity(VECTOR2(this->getVelocity().x, 0));
+		if ((this->getPosition().x > Camera::getInstance()->getActiveArea().right) ||
+			(this->getPosition().x < Camera::getInstance()->getActiveArea().left))
+			Camera::getInstance()->setVelocity(VECTOR2(this->getVelocity().x, 0));
 	}
 	else
 	{
-		if ((this->getPosition().y > this->camera->getActiveArea().top) || (this->getPosition().y < this->camera->getActiveArea().bottom))
-			this->camera->setVelocity(VECTOR2(0, this->getVelocity().y));
+		if ((this->getPosition().y > Camera::getInstance()->getActiveArea().top) ||
+			(this->getPosition().y < Camera::getInstance()->getActiveArea().bottom))
+			Camera::getInstance()->setVelocity(VECTOR2(0, this->getVelocity().y));
 	}
 
 	SimonStateManager::getInstance()->getCurrentState()->update(dt);
@@ -213,11 +213,6 @@ Animation* Simon::getDownFightAnimation()
 Animation* Simon::getSitFightAnimation()
 {
 	return this->sit_fight_animation;
-}
-
-void Simon::setCamera(Camera * cam)
-{
-	this->camera = cam;
 }
 
 void Simon::onCollision(BaseObject *object, float dt)

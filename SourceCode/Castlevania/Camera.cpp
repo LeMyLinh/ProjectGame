@@ -1,6 +1,22 @@
 #include "Camera.h"
+#include "Define.h"
+
 #define ACTIVE_AREA_WIDTH 32
 #define ACTIVE_AREA_HEIGHT 32
+
+Camera * Camera::instance = nullptr;
+
+Camera * Camera::getInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new Camera();
+		instance->width = GAME_WIDTH;
+		instance->height = GAME_HEIGHT;
+	}
+
+	return instance;
+}
 
 Camera::Camera(int width, int height)
 {
@@ -9,8 +25,14 @@ Camera::Camera(int width, int height)
 	this->position = D3DXVECTOR3(0, 0, 0);
 	this->velocity = D3DXVECTOR2(0, 0);
 	this->canFollowHorizontal = true;
+
+	instance = this;
 }
 
+Camera::Camera()
+{
+
+}
 
 Camera::~Camera()
 {

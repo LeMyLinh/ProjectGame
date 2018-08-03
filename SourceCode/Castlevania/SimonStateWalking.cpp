@@ -46,7 +46,7 @@ void SimonStateWalking::init()
 	walking = simon->getWalkingAnimation();
 	walkFighting = simon->getFightingAnimation();
 	
-	this->simon->setOrigin(VECTOR2(0.5f, 1));
+	this->simon->setOrigin(VECTOR2(0, 1));
 
 	this->animation = simon->getWalkingAnimation();
 }
@@ -85,6 +85,8 @@ void SimonStateWalking::handleInput(float dt)
 			this->simon->setDirection(eDirection::right);
 		}
 
+
+		
 		this->simon->setVelocityX(SIMON_VERLOCITY_X);
 	}
 
@@ -117,10 +119,11 @@ void SimonStateWalking::handleInput(float dt)
 
 		this->simon->setVelocityX(0);
 
-		if (simon->getDirection() == eDirection::right)
-			this->simon->setPosition(VECTOR2(this->simon->getPosition().x + WIDTH_WALK * 0.5f, this->simon->getPosition().y - HEIGHT_WALK * 0.5f));
-		else
-			this->simon->setPosition(VECTOR2(this->simon->getPosition().x - WIDTH_WALK * 0.5f, this->simon->getPosition().y - HEIGHT_WALK * 0.5f));
+		//if (simon->getDirection() == eDirection::right)
+		//	this->simon->setPosition(VECTOR2(this->simon->getPosition().x + WIDTH_WALK * 0.5f, this->simon->getPosition().y - HEIGHT_WALK * 0.5f));
+		//else
+		//	this->simon->setPosition(VECTOR2(this->simon->getPosition().x - WIDTH_WALK * 0.5f, this->simon->getPosition().y - HEIGHT_WALK * 0.5f));
+		this->simon->setPosition(VECTOR2(this->simon->getPosition().x, this->simon->getPosition().y - HEIGHT_WALK * 0.5f));
 
 		this->simon->setStatus(eStatus::JUMPING);
 		SimonStateManager::getInstance()->changeStateTo(eStatus::JUMPING);
@@ -151,6 +154,7 @@ void SimonStateWalking::update(float dt)
 	simon->updateHorizontal(dt);
 
 	setBoundCollision();
+
 	this->simon->setVelocity(VECTOR2(0, 0));
 
 	this->simon->setCanMoveLeft(true);
@@ -172,8 +176,6 @@ void SimonStateWalking::onCollision(BaseObject *obj, float dt)
 {
 	CollideDirection collideDirection;
 	Rect collideRect;
-
-	float addX, addY = 0;
 
 	if (!Collision::getInstance()->checkOnGround(simon->getBoundCollision(), dt*simon->getVelocity().x))
 	{

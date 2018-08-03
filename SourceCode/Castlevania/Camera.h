@@ -2,10 +2,14 @@
 #include <d3dx9.h>
 #include <d3d9.h>
 
+#define CAM_POS_X 896
+#define CAM_POS_Y 778
 
 class Camera
 {
 private:
+	static Camera *instance;
+
 	int             width;
 	int             height;
 
@@ -16,6 +20,9 @@ private:
 	bool canFollowHorizontal;
 
 public:
+	static Camera *getInstance();
+	
+	Camera();
 	Camera(int width, int height);
 	~Camera();
 

@@ -10,6 +10,12 @@ ObjectManager * ObjectManager::getInstance()
 	return instance;
 }
 
+void ObjectManager::init(TextureManager *textureM, Graphics *graphics)
+{
+	this->texttureManager = textureM;
+	this->graphics = graphics;
+}
+
 void ObjectManager::onCheckCollision(BaseObject * obj, float frametime)
 {
 
@@ -21,54 +27,42 @@ void ObjectManager::onCheckCollision(BaseObject * obj, float frametime)
 
 bool ObjectManager::load_list(const char * filename)
 {
+	VECTOR2 transform;
+	if (this->camera)
+		transform = VECTOR2(GAME_WIDTH * 0.5f - camera->getPosition().x, GAME_HEIGHT * 0.5f - camera->getPosition().y);
 	try
 	{
 		ifstream ifs(filename);
 		IStreamWrapper isw(ifs);
 		Document jSon;
 		jSon.ParseStream(isw);
+
+		float x, y, height, width;
+		//Load Wall position
 		const Value& listWall = jSon["Wall"];
 		if (listWall.IsArray())
 		{
+			BaseObject object(eID::WALL);
+			Rect bound;
+
 			for (SizeType i = 0; i < listWall.Size(); i++)
 			{
-				BaseObject object(eID::WALL);
-				int x, y, height, width;
-				x = listWall[i]["x"].GetInt();
-				y = listWall[i]["y"].GetInt();
-				height = listWall[i]["height"].GetInt();
-				width = listWall[i]["width"].GetInt();
-				Rect bound;
-				bound.left = (float)x;
-				bound.top = (float)y;
-				bound.right = (float)x + width;
-				bound.bottom = (float)y + height;
+				x = listWall[i]["x"].GetFloat();
+				y = listWall[i]["y"].GetFloat();
+				height = listWall[i]["height"].GetFloat();
+				width = listWall[i]["width"].GetFloat();
+
+				bound.left = x;
+				bound.top = y;
+				bound.right = bound.left + width;
+				bound.bottom = bound.top + height;
 				object.setBoundCollision(bound);
 
 				object_list.push_back(object);
 			}
 
 		}
-		/*	const Value& listPort = jSon["Port"];
-		if (listPort.IsArray())
-		{
-		for (SizeType i = 0; i < listPort.Size(); i++)
-		{
-		BaseObject entity(eID::PORT);
-		int x, y, height, width;
-		x = listPort[i]["x"].GetInt();
-		y = listPort[i]["y"].GetInt();
-		height = listPort[i]["height"].GetInt();
-		width = listPort[i]["width"].GetInt();
-		MetroidRect bound;
-		bound.left = x;
-		bound.top = y;
-		bound.right = x + width;
-		bound.bottom = y + height;
-		entity.setBoundCollision(bound);
-		entity_list.push_back(entity);
-		}
-		}*/
+
 		return true;
 	}
 	catch (...)
@@ -89,5 +83,11 @@ ObjectManager::~ObjectManager()
 
 void ObjectManager::release()
 {
+	this->object_list.clear();
 	delete instance;
+}
+
+void ObjectManager::setCamera(Camera *cam)
+{
+	this->camera = cam;
 }
