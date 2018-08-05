@@ -43,6 +43,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="WhiteSkeleton.h" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +69,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WhiteSkeleton.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>

@@ -46,9 +46,9 @@ void SimonStateWalking::init()
 	walking = simon->getWalkingAnimation();
 	walkFighting = simon->getFightingAnimation();
 	
-	this->simon->setOrigin(VECTOR2(0, 1));
+	this->simon->setOrigin(VECTOR2(0.5f, 1));
 
-	this->animation = simon->getWalkingAnimation();
+	this->animation = walking;
 }
 
 void SimonStateWalking::handleInput(float dt)

@@ -41,8 +41,8 @@ void Map::draw()
 	RECT viewport = Camera::getInstance()->getBound();
 	int columnBegin = viewport.left / tileW;
 	int columnEnd = columnBegin + Camera::getInstance()->getWidth() / tileW + 1;
-	int rowBegin = viewport.top / tileH;
-	int rowEnd = rowBegin + Camera::getInstance()->getHeight() / tileH + 1;
+	int rowBegin = (viewport.top) / tileH;
+	int rowEnd = rowBegin + (Camera::getInstance()->getHeight()) / tileH + 1;
 
 	// set Follow direction for camera
 	if (mapCell[rowBegin - 1][columnBegin].rect == NULL)

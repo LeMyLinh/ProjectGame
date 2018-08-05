@@ -63,9 +63,9 @@ RECT Camera::getBound()
 	RECT bound;
 
 	bound.left = (LONG)(position.x - width * 0.5f);
-	bound.right = (LONG)(bound.left + width);
+	bound.right = (LONG)(position.x + width * 0.5f);
 	bound.top = (LONG)(position.y - height * 0.5f);
-	bound.bottom = (LONG)(bound.top + height);
+	bound.bottom = (LONG)(position.y + height * 0.5f);
 
 	return bound;
 }

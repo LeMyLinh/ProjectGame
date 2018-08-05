@@ -37,9 +37,16 @@ public:
 	const int down_stair[2] = { 4,2 };
 	const int up_stair[2] = { 5,2 };
 	const int dieing = 8;
-
+	const int beHit[4] = { 21,31,32,33 };
 	//Enemy
 	//White Skeleton
 	const int whiteSkeleton[2] = { 22, 23 };
+	const int whiteBone[2] = { 34, 35 };
+	const int axeMan[2] = { 24, 25 };
+	const int dragonSkullCannon = 26;
+	const int hunchback[2] = { 27, 28 };
+	const int medusa[2] = { 29, 30 };
+
+
 };
 
